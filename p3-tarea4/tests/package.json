@@ -1,0 +1,17 @@
+{
+    "name": "automation-tests",
+    "version": "1.0.0",
+    "type": "module",
+    "scripts": {
+        "test": "node runner.js",
+        "test:login": "node h1-login.test.js",
+        "test:create": "node h2-create-user.test.js",
+        "test:edit": "node h3-edit-user.test.js",
+        "test:delete": "node h4-delete-user.test.js",
+        "test:list": "node h5-list-users.test.js"
+    },
+    "dependencies": {
+        "chromedriver": "^120.0.0",
+        "selenium-webdriver": "^4.41.0"
+    }
+}

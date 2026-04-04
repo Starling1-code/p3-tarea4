@@ -1,0 +1,228 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reporte de Pruebas Automatizadas</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f5f5f5; }
+        .header { background: #667eea; color: white; padding: 20px; border-radius: 5px; }
+        .container { max-width: 1000px; margin: 0 auto; }
+        .summary { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin: 20px 0; }
+        .summary-card { background: white; padding: 15px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        .summary-card h3 { margin: 0 0 10px 0; }
+        .passed { color: #27ae60; font-weight: bold; }
+        .failed { color: #e74c3c; font-weight: bold; }
+        .test-case { background: white; padding: 15px; margin: 10px 0; border-radius: 5px; border-left: 4px solid #667eea; }
+        .test-case.passed { border-left-color: #27ae60; }
+        .test-case.failed { border-left-color: #e74c3c; }
+        .screenshot { margin: 10px 0; max-width: 500px; border: 1px solid #ddd; border-radius: 3px; }
+        table { width: 100%; border-collapse: collapse; margin: 10px 0; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background: #f9f9f9; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Reporte de Pruebas Automatizadas</h1>
+            <p>Sistema de Gestión de Usuarios - Pruebas con Selenium</p>
+        </div>
+
+        <div class="summary">
+            <div class="summary-card">
+                <h3>Total de Pruebas</h3>
+                <p style="font-size: 24px; margin: 0;">19</p>
+            </div>
+            <div class="summary-card">
+                <h3>Exitosas</h3>
+                <p class="passed" style="font-size: 24px; margin: 0;">11</p>
+            </div>
+            <div class="summary-card">
+                <h3>Fallidas</h3>
+                <p class="failed" style="font-size: 24px; margin: 0;">8</p>
+            </div>
+        </div>
+
+        <h2>📋 Resultados Detallados</h2>
+        
+            <div class="test-case passed">
+                <h3>H1 - Login Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede iniciar sesión con credenciales válidas</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 1 - Autenticación de Usuario\login_exitoso_1775269916299.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:31:56.300Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H1 - Login Prueba negativa</h3>
+                <p><strong>Escenario:</strong> Usuario no puede iniciar sesión con credenciales inválidas</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 1 - Autenticación de Usuario\login_password_largo_1775269921989.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:32:01.991Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H1 - Login Prueba de Límites (Campos Vacíos)</h3>
+                <p><strong>Escenario:</strong> No debe permitir login con campos vacíos</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 1 - Autenticación de Usuario\login_campos_vacios_1775269926382.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:32:06.383Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H1 - Login Prueba de Límites (Datos Cortos)</h3>
+                <p><strong>Escenario:</strong> No debe permitir login con datos demasiado cortos</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 1 - Autenticación de Usuario\login_datos_cortos_1775269931325.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:32:11.325Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H1 - Login Prueba de Límites (Datos Largos)</h3>
+                <p><strong>Escenario:</strong> No debe permitir login con datos demasiado largos</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 1 - Autenticación de Usuario\login_datos_largos_1775269936249.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:32:16.250Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H2 - Crear Usuario Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede crear un nuevo usuario con datos válidos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Waiting for element to be located By(css selector, .form-container)
+Wait timed out after 5012ms</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 2 - Crear Nuevo Usuario\crear_usuario_error_1775270029009.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:33:49.010Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H2 - Crear Usuario Prueba Negativa</h3>
+                <p><strong>Escenario:</strong> No permite crear usuario con campos vacíos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Waiting for element to be located By(css selector, .form-container)
+Wait timed out after 5001ms</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 2 - Crear Nuevo Usuario\crear_usuario_negativo_error_1775270042390.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:34:02.393Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H2 - Crear Usuario Prueba de Límite</h3>
+                <p><strong>Escenario:</strong> Sistema maneja correctamente nombres extremadamente largos</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                <p><strong>Error:</strong> Resultado: Se creó (aceptable si el sistema lo permite)</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 2 - Crear Nuevo Usuario\crear_usuario_nombre_largo_1775270054437.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:34:14.437Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H3 - Editar Usuario Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede editar datos de usuario existente</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\editar_usuario_exitoso_1775270143124.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:35:43.125Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H3 - Editar Usuario Prueba de Límites</h3>
+                <p><strong>Escenario:</strong> Sistema valida datos largos o inválidos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Permitió guardar datos inválidos/largos</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\editar_usuario_limites_1775270155342.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:35:55.345Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H2 - Crear Usuario Prueba Negativa</h3>
+                <p><strong>Escenario:</strong> No permite crear usuario sin datos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Waiting for element to be located By(css selector, .btn-create)
+Wait timed out after 5208ms</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\crear_usuario_negativo_error_1775270168862.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:36:08.863Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H3 - Editar Usuario Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede editar datos de usuario existente</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\editar_usuario_exitoso_1775270226946.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:37:06.947Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H3 - Editar Usuario Prueba de Límites</h3>
+                <p><strong>Escenario:</strong> Sistema valida datos largos o inválidos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Permitió guardar datos inválidos/largos</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\editar_usuario_limites_1775270239030.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:37:19.031Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H2 - Crear Usuario Prueba Negativa</h3>
+                <p><strong>Escenario:</strong> No permite crear usuario sin datos</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Waiting for element to be located By(css selector, .btn-create)
+Wait timed out after 5217ms</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 3 - Editar Usuario Existente\crear_usuario_negativo_error_1775270252574.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:37:32.574Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H4 - Eliminar Usuario Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede eliminar un usuario creado con confirmación</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Waiting for element to be located By(css selector, .form-container)
+Wait timed out after 5018ms</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 4 - Eliminar Usuario\eliminar_usuario_error_1775270297779.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:38:17.780Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H4 - Eliminar Usuario Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Usuario puede eliminar un usuario existente con confirmación</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 4 - Eliminar Usuario\eliminar_usuario_exitoso_1775270353963.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:39:13.966Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H4 - Eliminar Usuario Prueba Negativa</h3>
+                <p><strong>Escenario:</strong> Sistema no elimina si usuario cancela confirmación</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 4 - Eliminar Usuario\eliminar_cancelado_1775270364595.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:39:24.596Z</p>
+            </div>
+        
+            <div class="test-case failed">
+                <h3>H4 - Eliminar Usuario Prueba de Límites</h3>
+                <p><strong>Escenario:</strong> Sistema actualiza correctamente el contador al eliminar</p>
+                <p><strong>Estado:</strong> <span class="failed">FAILED</span></p>
+                <p><strong>Error:</strong> Usuario no apareció en la tabla</p>
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 4 - Eliminar Usuario\eliminar_limite_error_1775270379212.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:39:39.213Z</p>
+            </div>
+        
+            <div class="test-case passed">
+                <h3>H5 - Listar Usuarios Camino Feliz</h3>
+                <p><strong>Escenario:</strong> Dashboard muestra tabla con usuarios correctamente</p>
+                <p><strong>Estado:</strong> <span class="passed">PASSED</span></p>
+                
+                <p><img src="C:\crudUserP3Tarea3\screenshots\Historia 5 - Listar Todos los Usuarios\listar_usuarios_exitoso_1775270432340.png" class="screenshot" alt="Screenshot"></p>
+                <p><strong>Timestamp:</strong> 2026-04-04T02:40:32.341Z</p>
+            </div>
+        
+    </div>
+</body>
+</html>
+        

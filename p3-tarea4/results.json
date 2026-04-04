@@ -1,0 +1,154 @@
+[
+  {
+    "timestamp": "2026-04-04T02:31:56.300Z",
+    "testCase": "H1 - Login Camino Feliz",
+    "scenario": "Usuario puede iniciar sesión con credenciales válidas",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 1 - Autenticación de Usuario\\login_exitoso_1775269916299.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:32:01.991Z",
+    "testCase": "H1 - Login Prueba negativa",
+    "scenario": "Usuario no puede iniciar sesión con credenciales inválidas",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 1 - Autenticación de Usuario\\login_password_largo_1775269921989.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:32:06.383Z",
+    "testCase": "H1 - Login Prueba de Límites (Campos Vacíos)",
+    "scenario": "No debe permitir login con campos vacíos",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 1 - Autenticación de Usuario\\login_campos_vacios_1775269926382.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:32:11.325Z",
+    "testCase": "H1 - Login Prueba de Límites (Datos Cortos)",
+    "scenario": "No debe permitir login con datos demasiado cortos",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 1 - Autenticación de Usuario\\login_datos_cortos_1775269931325.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:32:16.250Z",
+    "testCase": "H1 - Login Prueba de Límites (Datos Largos)",
+    "scenario": "No debe permitir login con datos demasiado largos",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 1 - Autenticación de Usuario\\login_datos_largos_1775269936249.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:33:49.010Z",
+    "testCase": "H2 - Crear Usuario Camino Feliz",
+    "scenario": "Usuario puede crear un nuevo usuario con datos válidos",
+    "status": "failed",
+    "error": "Waiting for element to be located By(css selector, .form-container)\nWait timed out after 5012ms",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 2 - Crear Nuevo Usuario\\crear_usuario_error_1775270029009.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:34:02.393Z",
+    "testCase": "H2 - Crear Usuario Prueba Negativa",
+    "scenario": "No permite crear usuario con campos vacíos",
+    "status": "failed",
+    "error": "Waiting for element to be located By(css selector, .form-container)\nWait timed out after 5001ms",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 2 - Crear Nuevo Usuario\\crear_usuario_negativo_error_1775270042390.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:34:14.437Z",
+    "testCase": "H2 - Crear Usuario Prueba de Límite",
+    "scenario": "Sistema maneja correctamente nombres extremadamente largos",
+    "status": "passed",
+    "error": "Resultado: Se creó (aceptable si el sistema lo permite)",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 2 - Crear Nuevo Usuario\\crear_usuario_nombre_largo_1775270054437.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:35:43.125Z",
+    "testCase": "H3 - Editar Usuario Camino Feliz",
+    "scenario": "Usuario puede editar datos de usuario existente",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\editar_usuario_exitoso_1775270143124.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:35:55.345Z",
+    "testCase": "H3 - Editar Usuario Prueba de Límites",
+    "scenario": "Sistema valida datos largos o inválidos",
+    "status": "failed",
+    "error": "Permitió guardar datos inválidos/largos",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\editar_usuario_limites_1775270155342.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:36:08.863Z",
+    "testCase": "H2 - Crear Usuario Prueba Negativa",
+    "scenario": "No permite crear usuario sin datos",
+    "status": "failed",
+    "error": "Waiting for element to be located By(css selector, .btn-create)\nWait timed out after 5208ms",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\crear_usuario_negativo_error_1775270168862.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:37:06.947Z",
+    "testCase": "H3 - Editar Usuario Camino Feliz",
+    "scenario": "Usuario puede editar datos de usuario existente",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\editar_usuario_exitoso_1775270226946.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:37:19.031Z",
+    "testCase": "H3 - Editar Usuario Prueba de Límites",
+    "scenario": "Sistema valida datos largos o inválidos",
+    "status": "failed",
+    "error": "Permitió guardar datos inválidos/largos",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\editar_usuario_limites_1775270239030.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:37:32.574Z",
+    "testCase": "H2 - Crear Usuario Prueba Negativa",
+    "scenario": "No permite crear usuario sin datos",
+    "status": "failed",
+    "error": "Waiting for element to be located By(css selector, .btn-create)\nWait timed out after 5217ms",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 3 - Editar Usuario Existente\\crear_usuario_negativo_error_1775270252574.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:38:17.780Z",
+    "testCase": "H4 - Eliminar Usuario Camino Feliz",
+    "scenario": "Usuario puede eliminar un usuario creado con confirmación",
+    "status": "failed",
+    "error": "Waiting for element to be located By(css selector, .form-container)\nWait timed out after 5018ms",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 4 - Eliminar Usuario\\eliminar_usuario_error_1775270297779.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:39:13.966Z",
+    "testCase": "H4 - Eliminar Usuario Camino Feliz",
+    "scenario": "Usuario puede eliminar un usuario existente con confirmación",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 4 - Eliminar Usuario\\eliminar_usuario_exitoso_1775270353963.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:39:24.596Z",
+    "testCase": "H4 - Eliminar Usuario Prueba Negativa",
+    "scenario": "Sistema no elimina si usuario cancela confirmación",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 4 - Eliminar Usuario\\eliminar_cancelado_1775270364595.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:39:39.213Z",
+    "testCase": "H4 - Eliminar Usuario Prueba de Límites",
+    "scenario": "Sistema actualiza correctamente el contador al eliminar",
+    "status": "failed",
+    "error": "Usuario no apareció en la tabla",
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 4 - Eliminar Usuario\\eliminar_limite_error_1775270379212.png"
+  },
+  {
+    "timestamp": "2026-04-04T02:40:32.341Z",
+    "testCase": "H5 - Listar Usuarios Camino Feliz",
+    "scenario": "Dashboard muestra tabla con usuarios correctamente",
+    "status": "passed",
+    "error": null,
+    "screenshot": "C:\\crudUserP3Tarea3\\screenshots\\Historia 5 - Listar Todos los Usuarios\\listar_usuarios_exitoso_1775270432340.png"
+  }
+]
