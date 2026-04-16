@@ -699,120 +699,188 @@ Se implementa una pirámide de pruebas con dos niveles automatizados:
 
 ### 4.8 Ejecución y Demostración de Automatización
 
-Esta sección presenta la evidencia de la ejecución de las pruebas automatizadas implementadas en el proyecto ShopEasy. Las pruebas fueron ejecutadas en el entorno de desarrollo local con las siguientes versiones: PHP 8.3, Laravel 11, PHPUnit 11 y Cypress 13.
+Esta sección presenta la evidencia de la ejecución de las pruebas automatizadas implementadas en el proyecto ShopEasy. Las pruebas fueron ejecutadas en el entorno de desarrollo local con las siguientes versiones: **PHP 8.2.12**, **Laravel 11.51.0**, **PHPUnit 11.5.55** y **Cypress 13.x**, con base de datos PostgreSQL 17.
 
 #### 4.8.1 Ejecución de Pruebas PHPUnit (Backend)
 
-Comando ejecutado desde la raíz del proyecto backend:
+Comando ejecutado desde la carpeta `backend-laravel11/`:
 
 ```bash
-cd backend
 php artisan test --testdox
 ```
 
 **Resultado obtenido:**
 
 ```
-   INFO  Running tests.
+PHPUnit 11.5.55 by Sebastian Bergmann and contributors.
 
-  Tests\Feature\AuthTest ✓
-  ✓ user can register with valid data                          0.18s
-  ✓ register fails with duplicate email                       0.10s
-  ✓ register fails with short password                        0.08s
-  ✓ user can login with valid credentials                     0.12s
-  ✓ login fails with wrong password                           0.09s
-  ✓ authenticated user can logout                             0.11s
-  ✓ protected route returns 401 without token                 0.07s
+Runtime:       PHP 8.2.12
+Configuration: C:\ProyectoFinal\backend-laravel11\phpunit.xml
 
-  Tests\Feature\CartTest ✓
-  ✓ user can add product to cart                              0.14s
-  ✓ adding existing product increments quantity               0.11s
-  ✓ user can view their cart                                  0.09s
-  ✓ user can update cart item quantity                        0.10s
-  ✓ updating quantity to zero removes item                    0.10s
-  ✓ user can remove item from cart                            0.09s
+   PASS  Tests\Unit\ExampleTest
+  ✓ that true is true
 
-  Tests\Feature\OrderTest ✓
-  ✓ user can place order from cart                            0.16s
-  ✓ checkout with empty cart returns error                    0.09s
-  ✓ user can list their orders                                0.11s
-  ✓ user cannot see other users orders                        0.12s
-  ✓ admin can update order status                             0.13s
+   PASS  Tests\Feature\AuthTest
+  ✓ user can register with valid data                               0.60s
+  ✓ register fails with duplicate email                             0.19s
+  ✓ register fails with short password                              0.05s
+  ✓ user can login with valid credentials                           0.10s
+  ✓ login fails with wrong password                                 0.05s
+  ✓ authenticated user can logout                                   0.18s
+  ✓ protected route returns 401 without token                       0.04s
 
-  Tests 18, passed 18                                         1.68s
+   PASS  Tests\Feature\CartTest
+  ✓ user can add product to cart                                    0.08s
+  ✓ adding existing product increments quantity                     0.08s
+  ✓ user can view their cart                                        0.06s
+  ✓ user can update cart item quantity                              0.07s
+  ✓ updating quantity to zero removes item                          0.18s
+  ✓ user can remove item from cart                                  0.09s
+
+   PASS  Tests\Feature\OrderTest
+  ✓ user can place order from cart                                  0.08s
+  ✓ checkout with empty cart returns error                          0.16s
+  ✓ user can list their orders                                      0.06s
+  ✓ admin can update order status                                   0.06s
+  ✓ user cannot see another users order                             0.19s
+
+   PASS  Tests\Feature\ProductTest
+  ✓ anyone can list products                                        0.05s
+  ✓ products can be searched by name                                0.05s
+  ✓ products can be filtered by category                            0.05s
+  ✓ anyone can view product detail                                  0.05s
+  ✓ inactive product returns 404                                    0.05s
+  ✓ admin can create product                                        0.06s
+  ✓ customer cannot create product                                  0.06s
+  ✓ admin can delete product without orders                         0.18s
+
+  Tests:    27 passed (78 assertions)
+  Duration: 2.93s
 ```
 
-**Resumen:** 18 pruebas ejecutadas, 18 exitosas (PASS), 0 fallidas. Tiempo total de ejecución: 1.68 segundos.
+**Resumen:** 27 pruebas ejecutadas en 4 suites (Auth, Cart, Order, Product), **27 exitosas (PASS)**, 0 fallidas, 78 assertions verificadas. Tiempo total: 2.93 segundos.
 
 ---
 
-#### 4.8.2 Ejecución de Pruebas Cypress (End-to-End)
+#### 4.8.2 Defecto encontrado y corregido durante las pruebas
 
-Comando ejecutado desde la raíz del proyecto frontend con el servidor corriendo:
+Durante la ejecución inicial de pruebas se detectó y corregió el siguiente defecto:
+
+| Campo | Detalle |
+|-------|---------|
+| **ID** | BUG-01 |
+| **Descripción** | Al llamar `POST /api/login` desde el frontend en React, el servidor respondía con error CSRF token mismatch (HTTP 419) |
+| **Causa** | El middleware `statefulApi()` en `bootstrap/app.php` requería cookie de sesión CSRF, incompatible con autenticación Bearer token |
+| **Solución** | Eliminado `$middleware->statefulApi()` del bootstrap. La API utiliza exclusivamente autenticación por token Sanctum |
+| **Severidad** | Alta |
+| **Estado** | Resuelto |
+| **Prueba de regresión** | `AuthTest::test_user_can_login_with_valid_credentials` — PASS |
+
+---
+
+#### 4.8.3 Casos de prueba PHPUnit por módulo
+
+**Módulo Auth (7 pruebas — CP-01 al CP-07):**
+
+| CP | Método de prueba | Historia | Resultado |
+|----|-----------------|----------|-----------|
+| CP-01 | `test_user_can_register_with_valid_data` | US-01 | PASS |
+| CP-02 | `test_register_fails_with_duplicate_email` | US-01 | PASS |
+| CP-03 | `test_register_fails_with_short_password` | US-01 | PASS |
+| CP-04 | `test_user_can_login_with_valid_credentials` | US-02 | PASS |
+| CP-05 | `test_login_fails_with_wrong_password` | US-02 | PASS |
+| CP-06 | `test_authenticated_user_can_logout` | US-03 | PASS |
+| CP-07 | `test_protected_route_returns_401_without_token` | RNF-01 | PASS |
+
+**Módulo Cart (6 pruebas — CP-08 al CP-13):**
+
+| CP | Método de prueba | Historia | Resultado |
+|----|-----------------|----------|-----------|
+| CP-08 | `test_user_can_add_product_to_cart` | US-08 | PASS |
+| CP-09 | `test_adding_existing_product_increments_quantity` | US-08 | PASS |
+| CP-10 | `test_user_can_view_their_cart` | US-09 | PASS |
+| CP-11 | `test_user_can_update_cart_item_quantity` | US-09 | PASS |
+| CP-12 | `test_updating_quantity_to_zero_removes_item` | US-09 | PASS |
+| CP-13 | `test_user_can_remove_item_from_cart` | US-09 | PASS |
+
+**Módulo Order (5 pruebas — CP-14 al CP-18):**
+
+| CP | Método de prueba | Historia | Resultado |
+|----|-----------------|----------|-----------|
+| CP-14 | `test_user_can_place_order_from_cart` | US-10 | PASS |
+| CP-15 | `test_checkout_with_empty_cart_returns_error` | US-10 | PASS |
+| CP-16 | `test_user_can_list_their_orders` | US-10 | PASS |
+| CP-17 | `test_admin_can_update_order_status` | US-12 | PASS |
+| CP-18 | `test_user_cannot_see_another_users_order` | RNF-01 | PASS |
+
+**Módulo Product (8 pruebas — CP-19 al CP-26):**
+
+| CP | Método de prueba | Historia | Resultado |
+|----|-----------------|----------|-----------|
+| CP-19 | `test_anyone_can_list_products` | US-04 | PASS |
+| CP-20 | `test_products_can_be_searched_by_name` | US-06 | PASS |
+| CP-21 | `test_products_can_be_filtered_by_category` | US-07 | PASS |
+| CP-22 | `test_anyone_can_view_product_detail` | US-05 | PASS |
+| CP-23 | `test_inactive_product_returns_404` | US-05 | PASS |
+| CP-24 | `test_admin_can_create_product` | US-11 | PASS |
+| CP-25 | `test_customer_cannot_create_product` | US-11 | PASS |
+| CP-26 | `test_admin_can_delete_product_without_orders` | US-11 | PASS |
+
+---
+
+#### 4.8.4 Ejecución de Pruebas Cypress (End-to-End)
+
+Las pruebas E2E validan los flujos completos de usuario ejecutándose en el navegador contra los servidores reales (backend en `localhost:8000`, frontend en `localhost:5173`).
+
+Comando ejecutado desde la carpeta `frontend/`:
 
 ```bash
 npx cypress run --reporter spec
 ```
 
+**Archivos de prueba:**
+- `tests/cypress/e2e/flujo_compra.cy.js` — Flujo completo de compra
+- `tests/cypress/e2e/admin_products.cy.js` — Panel de administración
+
 **Resultado obtenido:**
 
 ```
-====================================================================================================
-
-  (Run Starting)
-
-  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
-  │ Cypress:        13.17.0                                                                        │
-  │ Browser:        Electron 118 (headless)                                                        │
-  │ Node Version:   v20.11.0                                                                       │
-  │ Specs:          2 found (admin_products.cy.js, flujo_compra.cy.js)                             │
-  └────────────────────────────────────────────────────────────────────────────────────────────────┘
-
-  Running:  admin_products.cy.js                                                          (1 of 2)
-
-  ShopEasy - Panel de Administración
-    ✓ Admin puede acceder al panel de administración (1023ms)
-    ✓ Admin puede crear un nuevo producto (2481ms)
-    ✓ Cliente normal no puede acceder al panel admin (893ms)
-
-  3 passing (4s)
-
-  Running:  flujo_compra.cy.js                                                           (2 of 2)
+  Running:  flujo_compra.cy.js
 
   ShopEasy - Flujo Completo de Compra
-    ✓ CP-06: Flujo completo - registro, agregar al carrito y hacer checkout (5312ms)
-    ✓ Login con credenciales incorrectas muestra mensaje de error (987ms)
-    ✓ Ruta protegida /checkout redirige al login si no está autenticado (412ms)
+    ✓ CP-06: Flujo completo - registro, agregar al carrito y hacer checkout
+    ✓ Login con credenciales incorrectas muestra mensaje de error
+    ✓ Ruta protegida /checkout redirige al login si no está autenticado
 
-  3 passing (7s)
+  3 passing
 
-====================================================================================================
+  Running:  admin_products.cy.js
 
-  (Run Finished)
+  ShopEasy - Panel de Administración
+    ✓ Admin puede acceder al panel de administración
+    ✓ Admin puede crear un nuevo producto desde el panel
+    ✓ Cliente normal no puede acceder al panel admin
 
-       Spec                                         Tests  Passing  Pending  Failing
-  ┌────────────────────────────────────────────────────────────────────────────────────┐
-  │ ✓  admin_products.cy.js               00:04        3        3        0        0   │
-  ├────────────────────────────────────────────────────────────────────────────────────┤
-  │ ✓  flujo_compra.cy.js                 00:07        6        6        0        0   │
-  └────────────────────────────────────────────────────────────────────────────────────┘
-    ✓  All specs passed!                  00:11        6        6        0        0
-
+  3 passing
 ```
 
-**Resumen:** 6 pruebas E2E ejecutadas en 2 archivos spec, 6 exitosas (PASS), 0 fallidas. Tiempo total: 11 segundos.
+**Resumen:** 6 pruebas E2E ejecutadas en 2 archivos spec, **6 exitosas (PASS)**, 0 fallidas.
 
 ---
 
-#### 4.8.3 Resumen General de Automatización
+#### 4.8.5 Resumen General de Automatización
 
-| Suite | Herramienta | Pruebas | PASS | FAIL | Cobertura |
-|-------|-------------|---------|------|------|-----------|
-| Backend (Auth, Cart, Order) | PHPUnit 11 | 18 | 18 | 0 | Módulos Auth, Cart, Order |
-| E2E (flujos de usuario) | Cypress 13 | 6 | 6 | 0 | Flujo de compra completo, Panel admin |
-| **Total** | | **24** | **24** | **0** | |
+| Suite | Herramienta | Archivo | Pruebas | PASS | FAIL |
+|-------|-------------|---------|---------|------|------|
+| Autenticación | PHPUnit 11 | AuthTest.php | 7 | 7 | 0 |
+| Carrito | PHPUnit 11 | CartTest.php | 6 | 6 | 0 |
+| Órdenes | PHPUnit 11 | OrderTest.php | 5 | 5 | 0 |
+| Productos | PHPUnit 11 | ProductTest.php | 8 | 8 | 0 |
+| Flujo de compra E2E | Cypress 13 | flujo_compra.cy.js | 3 | 3 | 0 |
+| Panel admin E2E | Cypress 13 | admin_products.cy.js | 3 | 3 | 0 |
+| **TOTAL** | | | **32** | **32** | **0** |
 
-Todos los casos de prueba automatizados pasaron satisfactoriamente, validando los flujos críticos del sistema definidos en el Release 1.0.
+Todos los casos de prueba automatizados pasaron satisfactoriamente, validando los flujos críticos del sistema definidos en el Release 1.0. La cobertura incluye los módulos de autenticación, catálogo, carrito, órdenes y administración.
 
 ---
 
