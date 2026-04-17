@@ -211,7 +211,6 @@ Las tareas se organizan en el backlog del producto y se asignan a sprints según
 
 ### 3.2 Equipo de Trabajo
 
-Al ser un proyecto individual, el desarrollador asume todos los roles del equipo Scrum:
 
 | Rol | Nombre | Responsabilidades | Habilidades Requeridas |
 |-----|--------|-------------------|----------------------|
