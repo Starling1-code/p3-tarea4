@@ -71,7 +71,7 @@ El nombre refleja la propuesta de valor principal del sistema: una experiencia d
 |------|-----------|---------|---------------|
 | Backend | Laravel (PHP) | 11.x | Framework robusto con soporte nativo para APIs RESTful, autenticación y ORM |
 | Frontend | React.js | 18.x | Biblioteca reactiva ideal para interfaces dinámicas de usuario |
-| Base de datos | PostgreSQL | 16 | Motor de base de datos relacional confiable, de código abierto y escalable |
+| Base de datos | PostgreSQL | 17 | Motor de base de datos relacional confiable, de código abierto y escalable |
 | Autenticación | Laravel Sanctum | 4.x | Manejo seguro de tokens para SPA |
 | Estilos | Tailwind CSS | 3.x | Utilidades CSS de bajo nivel para diseño rápido y consistente |
 | Testing Backend | PHPUnit | 11.x | Framework estándar para pruebas en PHP/Laravel |
@@ -236,14 +236,14 @@ Al ser un proyecto individual, el desarrollador asume todos los roles del equipo
 
 ### 3.4 Épicas del Proyecto
 
-Las épicas agrupan historias de usuario relacionadas con un objetivo común dentro del sistema:
+Las épicas agrupan historias de usuario relacionadas con un objetivo común dentro del sistema. Los identificadores US-XX utilizados en secciones 3.6 y 4 son códigos internos de este documento para trazabilidad entre historias y casos de prueba; en Jira cada ítem recibe el código de ticket del proyecto automáticamente.
 
-| Épica | Código | Descripción | Historias Asociadas |
-|-------|--------|-------------|---------------------|
-| Gestión de Usuarios | EP-01 | Todo lo relacionado con el registro, autenticación y perfil de usuarios | US-01, US-02, US-03 |
-| Catálogo de Productos | EP-02 | Funcionalidades de exploración y búsqueda del catálogo de productos | US-04, US-05, US-06, US-07 |
-| Carrito y Checkout | EP-03 | Proceso completo de selección de productos y generación de pedidos | US-08, US-09, US-10 |
-| Administración | EP-04 | Herramientas para que el administrador gestione el sistema | US-11, US-12 |
+| Épica | Descripción | Historias Incluidas |
+|-------|-------------|---------------------|
+| Gestión de Usuarios | Todo lo relacionado con el registro, autenticación y perfil de usuarios | Registro de cuenta, Inicio de sesión, Cierre de sesión |
+| Catálogo de Productos | Funcionalidades de exploración y búsqueda del catálogo de productos | Explorar catálogo, Ver detalle de producto, Buscar por nombre, Filtrar por categoría |
+| Carrito y Checkout | Proceso completo de selección de productos y generación de pedidos | Agregar al carrito, Gestionar carrito, Realizar checkout y orden |
+| Administración | Herramientas para que el administrador gestione el sistema | Gestionar productos (CRUD), Consultar órdenes de clientes |
 
 ### 3.5 Ceremonias de Scrum
 
@@ -273,7 +273,7 @@ Las épicas agrupan historias de usuario relacionadas con un objetivo común den
 
 ### 3.6 Historias de Usuario
 
-#### EP-01: Gestión de Usuarios
+#### Gestión de Usuarios
 
 ---
 
@@ -322,7 +322,7 @@ Las épicas agrupan historias de usuario relacionadas con un objetivo común den
 
 ---
 
-#### EP-02: Catálogo de Productos
+#### Catálogo de Productos
 
 ---
 
@@ -386,7 +386,7 @@ Las épicas agrupan historias de usuario relacionadas con un objetivo común den
 
 ---
 
-#### EP-03: Carrito y Checkout
+#### Carrito y Checkout
 
 ---
 
@@ -439,7 +439,7 @@ Las épicas agrupan historias de usuario relacionadas con un objetivo común den
 
 ---
 
-#### EP-04: Administración
+#### Administración
 
 ---
 
@@ -910,7 +910,7 @@ El sistema resultante cumple con todos los requerimientos definidos para el Rele
 
 3. Meta Open Source. (2024). *React - The library for web and native user interfaces*. Recuperado de https://react.dev/
 
-4. The PostgreSQL Global Development Group. (2024). *PostgreSQL 16 Documentation*. Recuperado de https://www.postgresql.org/docs/16/
+4. The PostgreSQL Global Development Group. (2024). *PostgreSQL 17 Documentation*. Recuperado de https://www.postgresql.org/docs/17/
 
 5. Cypress.io. (2024). *Cypress Documentation*. Recuperado de https://docs.cypress.io
 
@@ -922,15 +922,5 @@ El sistema resultante cumple con todos los requerimientos definidos para el Rele
 
 ---
 
-## 7. LINKS Y ENTREGABLES
 
-A continuación se listan los recursos externos del proyecto para verificación y evaluación:
 
-| Recurso | Descripción | URL |
-|---------|-------------|-----|
-| **Repositorio de código** | Código fuente completo del proyecto (backend Laravel + frontend React + pruebas) en GitHub | https://github.com/starling-rosario/shopeasy |
-| **Gestión del proyecto (Jira)** | Tablero Jira con épicas, historias de usuario (US-01 a US-12), sprints y backlog del proyecto | https://starling-rosario.atlassian.net/jira/software/projects/SE/boards |
-| **Pruebas automatizadas** | Carpeta de pruebas en el repositorio con todos los casos PHPUnit y Cypress | https://github.com/starling-rosario/shopeasy/tree/main/tests |
-| **Video demostrativo** | Video mostrando el incremento del Release 1.0: autenticación, catálogo, carrito, checkout y ejecución de pruebas automatizadas | https://drive.google.com/file/d/shopeasy-demo-release1 |
-
-> **Nota para el evaluador:** Los accesos al repositorio de GitHub y al tablero de Jira han sido compartidos con los correos ktejada@itla.edu.do y 20186927@itla.edu.do. Si algún link no abre correctamente, favor comunicarse antes de la fecha de cierre.
